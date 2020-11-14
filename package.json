@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --config ./config/webpack.config.dev.js",
+    "dev": "webpack --config ./config/webpack.config.dev.js",
+    "prod": "webpack --config ./config/webpack.config.prod.js",
+    "predeploy": "npm run prod",
+    "deploy": "gh-pages -d build"
   },
   "author": "Mateusz Ratyński",
   "license": "ISC",
@@ -23,7 +27,7 @@
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "webpack": "^5.4.0",
-    "webpack-cli": "^4.2.0",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {

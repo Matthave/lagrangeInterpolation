@@ -37,7 +37,7 @@ const settings = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Header for Aurora Creation",
+      title: "Lagrange Interpolation",
       template: "src/templates/template.html",
     }),
     new CleanWebpackPlugin(),
