@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Helvetica;
+  font-family: "Goldman", cursive;
 }
 
 body {
@@ -10,69 +10,113 @@ body {
 }
 
 input {
+  width: 200px;
   height: 30px;
   border: 1px solid #aaa;
   border-radius: 12.5px;
   padding: 0 10px;
-  margin-right: 15px;
-  margin-bottom: 10px;
-  outline: 0;
+  transition: 0.15s linear;
+  outline: transparent;
 }
 
 label {
-  vertical-align: middle;
+  font-weight: bold;
+  text-align: center;
 }
 
 .mainSection {
-  display: flex;
+  @include sectionStyle;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
 
   &__title {
-    width: 100%;
+    width: 100vw;
+    min-width: 310px;
+    background-color: #000;
     text-transform: uppercase;
     text-align: center;
+    color: #fff;
     padding: 25px 0;
-    margin: 0 auto;
-  }
-
-  &__node {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     margin-bottom: 25px;
   }
 
-  &__count {
-    width: 100px;
+  &__node {
+    @include nodeStyle;
+  }
+
+  &__eleContainer {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+
+    @include mq(small) {
+      margin-bottom: 0px;
+    }
+  }
+
+  &__label {
+    width: 25px;
+    margin-right: 5px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  min-width: 310px;
+  height: 115px;
+  background-color: #000;
+  text-align: center;
+  color: #fff;
+  padding: 25px 0;
+  margin-top: 25px;
+
+  &__value,
+  &__calculate {
+    margin-top: 7.5px;
+    text-transform: uppercase;
+    font-size: 35px;
+  }
+}
+
+.search {
+  @include nodeStyle;
+
+  &__eleContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    margin: 5px auto 0;
+  }
+}
+
+.btnSection {
+  @include sectionStyle;
+
+  &__btn {
+    width: 125px;
     height: 35px;
     line-height: 35px;
     background-color: #fff;
     border: 1px solid #000;
     border-radius: 12.5px;
+    margin: 0 5px;
     font-weight: bold;
     color: #000;
     cursor: pointer;
     transition: 0.2s linear;
+    outline: transparent;
 
     &:hover {
       background-color: #111;
       color: #eee;
     }
-  }
-}
-
-.result {
-  width: 100%;
-  max-width: 1200px;
-  text-align: center;
-  margin: 25px auto;
-
-  &__title {
-    margin: 15px 0;
   }
 }

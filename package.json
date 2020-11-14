@@ -1,4 +1,5 @@
 {
+  "homepage": "https://matthave.github.io/lagrangeInterpolation/",
   "name": "lagrangeinterpolation",
   "version": "1.0.0",
   "description": "",
@@ -31,6 +32,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^2.2.0"
   }
 }

@@ -1,0 +1,52 @@
+@mixin sectionStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@mixin nodeStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 25px;
+
+  @include mq(small) {
+    flex-direction: row;
+  }
+}
+
+$breakpoints: (
+  xxsmall: (
+    min-width: 380px,
+  ),
+  xsmall: (
+    min-width: 460px,
+  ),
+  small: (
+    min-width: 640px,
+  ),
+  medium: (
+    min-width: 800px,
+  ),
+  large: (
+    min-width: 1024px,
+  ),
+  xlarge: (
+    min-width: 1200px,
+  ),
+  xxlarge: (
+    min-width: 1440px,
+  ),
+);
+
+@mixin mq($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
+  @if ($size) {
+    @media #{$size} {
+      @content;
+    }
+  }
+}

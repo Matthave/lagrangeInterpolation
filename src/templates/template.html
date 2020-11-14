@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Goldman&display=swap" rel="stylesheet">
     <title>Lagrange Interpolation</title>
   </head>
   <body>
@@ -14,54 +11,57 @@
       <section class="mainSection">
         <h1 class="mainSection__title">Lagrange Interpolation</h1>
         <div class="mainSection__node">
-          <div>
-            <label for="x0">x0</label>
+          <div class="mainSection__eleContainer">
+            <label class="mainSection__label" for="x0">x0</label>
             <input type="number" name="x0" id="x0">
           </div>
-          <div>
-            <label for="y0">y0</label>
+          <div class="mainSection__eleContainer">
+            <label class="mainSection__label" for="y0">y0</label>
             <input type="number" name="y0" id="y0">
           </div>
         </div>
 
         <div class="mainSection__node">
-          <div>
-            <label for="x1">x1</label>
+          <div class="mainSection__eleContainer">
+            <label class="mainSection__label" for="x1">x1</label>
             <input type="number" name="x1" id="x1">
           </div>
-          <div>
-            <label for="y1">y1</label>
+          <div class="mainSection__eleContainer">
+            <label class="mainSection__label" for="y1">y1</label>
             <input type="number" name="y1" id="y1">
           </div>
         </div>
 
         <div class="mainSection__node">
-          <div>
-            <label for="x2">x2</label>
+          <div class="mainSection__eleContainer">
+            <label class="mainSection__label" for="x2">x2</label>
             <input type="number" name="x2" id="x2">
           </div>
-          <div>
-            <label for="y2">y2</label>
+          <div class="mainSection__eleContainer">
+            <label class="mainSection__label" for="y2">y2</label>
             <input type="number" name="y2" id="y2">
           </div>
         </div>
 
-        <div class="mainSection__node">
-          <div>
-            <label for="searchResult">Search Result</label>
-            <input type="number" name="searchValue" id="searchResult">
+        <div class="search">
+          <div class="search__eleContainer">
+            <label class="search__label" for="searchResult">Search Result</label>
+            <input class="search__input" type="number" name="searchValue" id="searchResult">
           </div>
         </div>
 
-        <div class="mainSection__node">
-          <div>
-            <button class="mainSection__count">COUNT IT!</button>
+        <div class="btnSection">
+          <div class="btnSection__container">
+            <button class="btnSection__btn btnSection__calculate">CALCULATE</button>
+          </div>
+          <div class="btnSection__container">
+            <button class="btnSection__btn btnSection__clear">CLEAR</button>
           </div>
         </div>
       </section>
       <section class="result">
         <h3 class="result__title">Your Result</h3>
-        <h2 class="result__value"></h2>
+        <h2 class="result__value">- - -</h2>
       </section>
     </main>
   </body>
