@@ -7,6 +7,7 @@
 
 body {
   min-width: 310px;
+  overflow-x: hidden;
 }
 
 input {
@@ -132,4 +133,18 @@ label {
       color: #eee;
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: black;
+}
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fff;
 }

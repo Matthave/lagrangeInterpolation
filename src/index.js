@@ -44,9 +44,12 @@ class ButtonsHandler extends LagrangeInputs{
         const countBtn = document.querySelector(".btnSection__calculate");
         const clearBtn = document.querySelector(".btnSection__clear");  
         const addNodeBtn= document.querySelector(".btnSection__node");
+        const deleteNodeBtn = document.querySelector(".btnSection__deleteNode");
+
         addNodeBtn.addEventListener("click", ()=> this.addNewNodeFunc());
         countBtn.addEventListener("click", ()=> this.countItFunc());
         clearBtn.addEventListener("click", ()=> this.clearItFunc());
+        deleteNodeBtn.addEventListener('click', ()=> this.deleteNodeFunc());
     }
 
 
@@ -55,6 +58,7 @@ class ButtonsHandler extends LagrangeInputs{
 
         const mainSectionNode = document.createElement("div");
         mainSectionNode.classList.add("mainSection__node");
+        mainSectionNode.setAttribute("id", `node${finalValue.nodeList}`);
 
         const eleContainerX = document.createElement("div");
         eleContainerX.classList.add("mainSection__eleContainer");
@@ -198,6 +202,16 @@ class ButtonsHandler extends LagrangeInputs{
             ele.x = "";
             ele.y = "";
         })
+    }
+
+    deleteNodeFunc = () => {
+        const lastNodeNumber = finalValue.nodeList - 1;
+        const nodeToDelete = document.getElementById(`node${lastNodeNumber}`);
+        if(nodeToDelete){
+            nodeToDelete.remove();
+            nodesArray.splice(-1);
+            finalValue.nodeList--;
+        } 
     }
 }
 
