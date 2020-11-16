@@ -10,43 +10,33 @@
     <main>
       <section class="mainSection">
         <h1 class="mainSection__title">Lagrange Interpolation</h1>
-        <div class="mainSection__node">
-          <div class="mainSection__eleContainer">
-            <label class="mainSection__label" for="x0">x0</label>
-            <input type="number" name="x0" id="x0">
+        <div class="mainSection__allNodeContainer">
+          <div class="mainSection__node">
+            <div class="mainSection__eleContainer">
+              <label class="mainSection__label" for="x0">x0</label>
+              <input class="initialInput" type="number" name="x0" id="x0">
+            </div>
+            <div class="mainSection__eleContainer">
+              <label class="mainSection__label" for="y0">y0</label>
+              <input class="initialInput" type="number" name="y0" id="y0">
+            </div>
           </div>
-          <div class="mainSection__eleContainer">
-            <label class="mainSection__label" for="y0">y0</label>
-            <input type="number" name="y0" id="y0">
+
+          <div class="mainSection__node">
+            <div class="mainSection__eleContainer">
+              <label class="mainSection__label" for="x1">x1</label>
+              <input class="initialInput" type="number" name="x1" id="x1">
+            </div>
+            <div class="mainSection__eleContainer">
+              <label class="mainSection__label" for="y1">y1</label>
+              <input class="initialInput" type="number" name="y1" id="y1">
+            </div>
           </div>
         </div>
-
-        <div class="mainSection__node">
-          <div class="mainSection__eleContainer">
-            <label class="mainSection__label" for="x1">x1</label>
-            <input type="number" name="x1" id="x1">
-          </div>
-          <div class="mainSection__eleContainer">
-            <label class="mainSection__label" for="y1">y1</label>
-            <input type="number" name="y1" id="y1">
-          </div>
-        </div>
-
-        <div class="mainSection__node">
-          <div class="mainSection__eleContainer">
-            <label class="mainSection__label" for="x2">x2</label>
-            <input type="number" name="x2" id="x2">
-          </div>
-          <div class="mainSection__eleContainer">
-            <label class="mainSection__label" for="y2">y2</label>
-            <input type="number" name="y2" id="y2">
-          </div>
-        </div>
-
         <div class="search">
           <div class="search__eleContainer">
             <label class="search__label" for="searchResult">Search Result</label>
-            <input class="search__input" type="number" name="searchValue" id="searchResult">
+            <input class="search__input initialInput" type="number" name="searchResult" id="searchResult">
           </div>
         </div>
 
@@ -56,6 +46,12 @@
           </div>
           <div class="btnSection__container">
             <button class="btnSection__btn btnSection__clear">CLEAR</button>
+          </div>
+          <div class="btnSection__container">
+            <button class="btnSection__btn btnSection__node">ADD NODE</button>
+          </div>
+          <div class="btnSection__container">
+            <button class="btnSection__btn btnSection__node">DELETE NODE</button>
           </div>
         </div>
       </section>

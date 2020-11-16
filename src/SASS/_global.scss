@@ -69,18 +69,21 @@ label {
   justify-content: center;
   width: 100vw;
   min-width: 310px;
-  height: 115px;
+  height: 140px;
   background-color: #000;
   text-align: center;
   color: #fff;
   padding: 25px 0;
   margin-top: 25px;
 
-  &__value,
-  &__calculate {
+  &__value {
     margin-top: 7.5px;
     text-transform: uppercase;
-    font-size: 35px;
+    font-size: 25px;
+
+    @include mq(small) {
+      font-size: 35px;
+    }
   }
 }
 
@@ -99,9 +102,14 @@ label {
 
 .btnSection {
   @include sectionStyle;
+  flex-direction: column;
+
+  @include mq(small) {
+    flex-direction: row;
+  }
 
   &__btn {
-    width: 125px;
+    width: 135px;
     height: 35px;
     line-height: 35px;
     background-color: #fff;
@@ -113,6 +121,11 @@ label {
     cursor: pointer;
     transition: 0.2s linear;
     outline: transparent;
+    margin-bottom: 15px;
+
+    @include mq(small) {
+      margin-bottom: 0px;
+    }
 
     &:hover {
       background-color: #111;
