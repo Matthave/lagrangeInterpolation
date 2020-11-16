@@ -42,6 +42,15 @@ label {
 
   &__node {
     @include nodeStyle;
+    position: relative;
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: 0.2s linear;
+
+    &--onPosition {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   &__eleContainer {

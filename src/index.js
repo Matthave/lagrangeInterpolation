@@ -87,6 +87,9 @@ class ButtonsHandler extends LagrangeInputs{
         const mainSectionNode = document.createElement("div");
         mainSectionNode.classList.add("mainSection__node");
         mainSectionNode.setAttribute("id", `node${finalValue.nodeList}`);
+        setTimeout(() => {
+            mainSectionNode.classList.add("mainSection__node--onPosition");    
+        }, 150);
 
         const eleContainerX = document.createElement("div");
         eleContainerX.classList.add("mainSection__eleContainer");
@@ -248,11 +251,15 @@ class ButtonsHandler extends LagrangeInputs{
         const lastNodeNumber = finalValue.nodeList - 1;
         const nodeToDelete = document.getElementById(`node${lastNodeNumber}`);
         if(nodeToDelete){
-            nodeToDelete.remove();
-            nodesArray.splice(-1);
-            finalValue.nodeList--;
-            finalValue.searchValue = "";
-            document.querySelector(".search__input").value = "";
+            nodeToDelete.classList.remove("mainSection__node--onPosition");
+
+            setTimeout(() => {
+                nodeToDelete.remove();
+                nodesArray.splice(-1);
+                finalValue.nodeList--;
+                finalValue.searchValue = "";
+                document.querySelector(".search__input").value = "";
+            }, 300);
         }
 
         lagrangeInputs.checkSearchValue();
