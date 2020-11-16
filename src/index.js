@@ -22,17 +22,45 @@ class LagrangeInputs{
     }
 
     onChangeHandler = (e) =>{
+        const searchResultInput = document.querySelector(".search__input");
         const tName = e.target.name;
         const tValue = e.target.value;
 
         if(tName === "searchResult"){
-            finalValue.searchValue = tValue;
+            const maxAtt = searchResultInput.getAttribute("max");
+            if(parseInt(tValue) > parseInt(maxAtt)){
+                finalValue.searchValue = maxAtt;
+                searchResultInput.value = maxAtt;
+            }
+            else finalValue.searchValue = tValue;
         }else {
             finalValue[tName] = tValue;
         
             const targetNodeName = e.target.id[0];
             const targetId = e.target.id[1];
             nodesArray[targetId][targetNodeName]= tValue;
+
+
+            this.checkSearchValue();
+        }
+    }
+
+
+    checkSearchValue = () => {        
+        const searchResultInput = document.querySelector(".search__input");
+
+        if(nodesArray.every(ele => ele.x !== "")){
+            searchResultInput.classList.add("search__input--active");
+            
+            const allXValue = nodesArray.map(ele => ele.x);
+            const sortedXvalue = allXValue.sort(function(a,b){return a - b});
+
+            searchResultInput.setAttribute("min",`${sortedXvalue.slice(0,1)}`);
+            searchResultInput.setAttribute("max",`${sortedXvalue.slice(-1)}`)
+        }else{
+            searchResultInput.classList.remove("search__input--active");
+            searchResultInput.value = "";
+            finalValue.searchValue = "";
         }
     }
 }
@@ -105,10 +133,12 @@ class ButtonsHandler extends LagrangeInputs{
         nodesArray.push({x:"", y:""});
         finalValue.nodeList++;
         
+        lagrangeInputs.checkSearchValue();
     }
 
     countItFunc = () => {
         const inputsElement = document.querySelectorAll("input");
+        const searchResultInput = document.querySelector(".search__input");
         const isArrayFull = nodesArray.filter(ele => ele.x === "" || ele.y === "" );
 
         if(isArrayFull.length !== 0 || !finalValue.searchValue){
@@ -119,11 +149,19 @@ class ButtonsHandler extends LagrangeInputs{
                 }else{
                     input.style.border = "1px solid #aaa";
                 }
+
+                if(!searchResultInput.className.includes("search__input--active")){
+                    searchResultInput.style.border = "1px solid #aaa";
+                }
             }) 
         }else{
 
         inputsElement.forEach(input => input.style.border = "1px solid #aaa");
-        
+
+        if(parseInt(searchResultInput.getAttribute("min")) > finalValue.searchValue){
+            searchResultInput.value = searchResultInput.getAttribute("min");
+            finalValue.searchValue = searchResultInput.getAttribute("min");
+        }
 
         //Step 1
         const firstLoopUpper = [];
@@ -140,7 +178,7 @@ class ButtonsHandler extends LagrangeInputs{
             })
         })
 
-        //Step 2 Filter by Node element ( id ) and multiply it ( ULEPSZYC BO NIE JEST DRY)
+        //Step 2 Filter by Node element ( id ) and multiply it
         const secondLoopUpper = [];
         const secondLoopLower = [];
         nodesArray.forEach((ele,index)=>{
@@ -202,6 +240,8 @@ class ButtonsHandler extends LagrangeInputs{
             ele.x = "";
             ele.y = "";
         })
+
+        lagrangeInputs.checkSearchValue();
     }
 
     deleteNodeFunc = () => {
@@ -211,10 +251,13 @@ class ButtonsHandler extends LagrangeInputs{
             nodeToDelete.remove();
             nodesArray.splice(-1);
             finalValue.nodeList--;
-        } 
+            finalValue.searchValue = "";
+            document.querySelector(".search__input").value = "";
+        }
+
+        lagrangeInputs.checkSearchValue();
     }
 }
-
 
 const lagrangeInputs = new LagrangeInputs();
 const lagrangeButtons = new ButtonsHandler();

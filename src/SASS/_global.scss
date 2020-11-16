@@ -98,39 +98,12 @@ label {
 
   &__input {
     margin: 5px auto 0;
-  }
-}
+    pointer-events: none;
+    background-color: #efefef;
 
-.btnSection {
-  @include sectionStyle;
-  flex-direction: column;
-
-  @include mq(small) {
-    flex-direction: row;
-  }
-
-  &__btn {
-    width: 135px;
-    height: 35px;
-    line-height: 35px;
-    background-color: #fff;
-    border: 1px solid #000;
-    border-radius: 12.5px;
-    margin: 0 5px;
-    font-weight: bold;
-    color: #000;
-    cursor: pointer;
-    transition: 0.2s linear;
-    outline: transparent;
-    margin-bottom: 15px;
-
-    @include mq(small) {
-      margin-bottom: 0px;
-    }
-
-    &:hover {
-      background-color: #111;
-      color: #eee;
+    &--active {
+      pointer-events: initial;
+      background-color: #fff;
     }
   }
 }
