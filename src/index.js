@@ -37,7 +37,12 @@ class LagrangeInputs{
             finalValue[tName] = tValue;
         
             const targetNodeName = e.target.id[0];
-            const targetId = e.target.id[1];
+
+            const splitTargetId = e.target.id.split("");
+            splitTargetId.splice(0,1);
+            const joinRestId = splitTargetId.join("");
+            const targetId = joinRestId;
+
             nodesArray[targetId][targetNodeName]= tValue;
 
 
@@ -57,10 +62,12 @@ class LagrangeInputs{
 
             searchResultInput.setAttribute("min",`${sortedXvalue.slice(0,1)}`);
             searchResultInput.setAttribute("max",`${sortedXvalue.slice(-1)}`)
+            searchResultInput.setAttribute("placeholder",`${sortedXvalue.slice(0,1)} to ${sortedXvalue.slice(-1)}`)
         }else{
             searchResultInput.classList.remove("search__input--active");
             searchResultInput.value = "";
             finalValue.searchValue = "";
+            document.querySelector(".result__value").textContent = "- - -"
         }
     }
 }
@@ -259,6 +266,7 @@ class ButtonsHandler extends LagrangeInputs{
                 finalValue.nodeList--;
                 finalValue.searchValue = "";
                 document.querySelector(".search__input").value = "";
+                document.querySelector(".result__value").textContent = "- - -"
             }, 300);
         }
 
